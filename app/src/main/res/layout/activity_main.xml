@@ -20,6 +20,27 @@
         android:text="@string/games"
         android:background="#006BB7"
         android:textColor="#FFFFFF"
+        android:layout_margin="10dp"
         />
+
+    <android.support.v7.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/team_games"
+        android:background="#006BB7"
+        android:textColor="#FFFFFF"
+        android:layout_margin="10dp"
+        />
+
+    <android.support.v7.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="News"
+        android:background="#006BB7"
+        android:textColor="#FFFFFF"
+        android:layout_margin="10dp"
+        />
+
+
 
 </LinearLayout>

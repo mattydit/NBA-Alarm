@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">NBA Scheduler</string>
-    <string name="games">Games</string>
+    <string name="games">Daily Games</string>
+    <string name="team_games">Team Schedule</string>
 </resources>
