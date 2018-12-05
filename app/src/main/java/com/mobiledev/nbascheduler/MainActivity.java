@@ -1,6 +1,7 @@
 package com.mobiledev.nbascheduler;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
@@ -35,7 +36,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
             case R.id.daily:
             {
-                Intent daily_intent = new Intent(Intent.)
+                Intent daily_intent = new Intent(context, Daily.class);
+                startActivity(daily_intent);
+                break;
             }
         }
 
