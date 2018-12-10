@@ -1,5 +1,6 @@
 package com.mobiledev.nbascheduler;
 
+import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -12,11 +13,14 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Room.databaseBuilder(this, User.class, UserRoomDatabase).fallbackToDestructiveMigration().build();
 
         AppCompatButton dailybutton = findViewById(R.id.daily);
         AppCompatButton teamSchedbtn = findViewById(R.id.team_schedule);
