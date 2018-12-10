@@ -16,14 +16,22 @@ public class User
     @ColumnInfo(name = "username")
     private String username;
 
-    @ColumnInfo(name = "location")
-    private String location;
+    @ColumnInfo(name = "fav_team")
+    private String fav_team;
 
-    public User(int id, @NonNull String username, String location)
+    public User(int id, @NonNull String username, String fav_team)
     {
         this.id = id;
         this.username = username;
-        this.location = location;
+        this.fav_team = fav_team;
+    }
+
+    public String getFav_team() {
+        return fav_team;
+    }
+
+    public void setFav_team(String fav_team) {
+        this.fav_team = fav_team;
     }
 
     public String getUsername() {
@@ -32,14 +40,6 @@ public class User
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
     }
 
     public int getId() {
