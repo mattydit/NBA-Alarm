@@ -5,9 +5,9 @@
     <string name="Name">Username: </string>
     <string name="favourite">Favourite Team: </string>
     <string name="apply">Apply</string>
+    <string name="remindersbtn">My Reminders</string>
 
     <string-array name="teams_array">
-        <item>Blazers</item>
         <item>Bucks</item>
         <item>Bulls</item>
         <item>Cavaliers</item>
@@ -35,6 +35,7 @@
         <item>Suns</item>
         <item>Thunder</item>
         <item>Timberwolves</item>
+        <item>Trail Blazers</item>
         <item>Warriors</item>
         <item>Wizards</item>
     </string-array>

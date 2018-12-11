@@ -3,6 +3,8 @@ package com.mobiledev.nbascheduler;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.arch.persistence.room.Room;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -17,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -24,9 +27,6 @@ public class UserSettings extends AppCompatActivity
 {
     private String username;
     private String team;
-
-
-    private UserViewModel mUserViewModel;
 
     public String getUsername() {
         return username;
@@ -63,21 +63,28 @@ public class UserSettings extends AppCompatActivity
         apply.setOnClickListener(
                 new View.OnClickListener()
                 {
-                    @RequiresApi(api = Build.VERSION_CODES.O)
                     @Override
                     public void onClick(View v)
                     {
                         if (v.getId() == R.id.applybtn)
                         {
-                           setUsername(usernameText.getText().toString());
-                           setTeam(spinner.getSelectedItem().toString());
+                           username = usernameText.getText().toString();
+                           team = spinner.getSelectedItem().toString();
 
-                            Log.d("TAG", getUsername());
-                            Log.d("TAG", getTeam());
+                            Log.d("TAG", username);
+                            Log.d("TAG", team);
 
-                            UserRoomDatabase db = Room.databaseBuilder(getApplicationContext(), UserRoomDatabase.class, "user").build();
-                            Log.d("DB:", String.join(db.userDao().getAllUsers().toString()));
+                            //Save user settings in Shared preferences.
+                            SharedPreferences userPref = getApplicationContext().getSharedPreferences(
+                                    "settingsPref", Context.MODE_PRIVATE);
 
+                            SharedPreferences.Editor editor = userPref.edit();
+                            editor.putString("username", username);
+                            editor.putString("fav_team", team);
+
+                            editor.commit();
+
+                            Toast.makeText(getBaseContext(), "Settings Saved!", Toast.LENGTH_LONG).show();
                         }
                     }
                 }

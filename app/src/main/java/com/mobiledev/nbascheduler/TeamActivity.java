@@ -1,16 +1,13 @@
 package com.mobiledev.nbascheduler;
 
-import android.arch.persistence.room.Room;
-import android.content.Intent;
-import android.database.Cursor;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -22,75 +19,29 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
-public class Daily extends AppCompatActivity
+public class TeamActivity extends AppCompatActivity
 {
     private ProgressBar progressBar;
     private ListView listView;
     private List<Schedule> scheduleList;
 
-    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-    Date currentDate = new Date();
-    String localDate = df.format(currentDate);
-
-    //private static final String DATABASE_NAME = "reminder_db";
-    ReminderDatabase reminderDB;
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_daily);
-        Log.d("Current Date: ", localDate);
+        setContentView(R.layout.activity_team);
 
-        final ReminderDatabase reminderDB = ReminderDatabase.getINSTANCE();
-        //reminderDB = Room.databaseBuilder(getApplicationContext(), ReminderDatabase.class, DATABASE_NAME)
-        //        .fallbackToDestructiveMigration().allowMainThreadQueries().build();
-
-        listView = findViewById(R.id.gamelist);
-        progressBar = findViewById(R.id.progressbar);
+        listView = findViewById(R.id.teamlist);
+        progressBar = findViewById(R.id.progressbarteam);
         scheduleList = new ArrayList<>();
+
+
 
         //Fetch and parse data.
         loadList();
-
-        //Insert chosen game into database by long clicking.
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id)
-            {
-
-                //String pos = Integer.toString(position);
-
-                scheduleList.get(position).getGameID();
-
-                Toast.makeText(getBaseContext(), scheduleList.get(position).getGameID(), Toast.LENGTH_LONG).show();
-
-                final String gameID = scheduleList.get(position).getGameID();
-                final String g_date = scheduleList.get(position).getG_date();
-                final String time = scheduleList.get(position).getUTCtime();
-                final String visitor_team = scheduleList.get(position).getVisitor_team();
-                final String home_team = scheduleList.get(position).getHome_team();
-
-                //reminderDB = ReminderDatabase.getINSTANCE();
-
-                reminderDB.daoAccess().deleteAll();
-                //Add to database
-                ReminderDataModel reminder = new ReminderDataModel(gameID, g_date, time, visitor_team,
-                        home_team);
-                reminderDB.daoAccess().insertGame(reminder);
-
-                Log.d("DB: ", reminderDB.daoAccess().getAllreminders().toString());
-
-                return true;
-            }
-        });
     }
 
     private void loadList()
@@ -133,8 +84,12 @@ public class Daily extends AppCompatActivity
                                     String home = hOBJ.getString("tn");
                                     //Log.d("Home Team: ", home);
 
-                                    //Compare game date to current time. If yes add to list.
-                                    if (date.equals(localDate))
+                                    SharedPreferences userPref = getApplicationContext().getSharedPreferences(
+                                            "settingsPref", Context.MODE_PRIVATE);
+
+                                    String fav_team = userPref.getString("fav_team", null);
+
+                                    if (visitor.equals(fav_team) || home.equals(fav_team))
                                     {
                                         Log.d("Game ID: ", gid);
                                         Log.d("Date: ", date);

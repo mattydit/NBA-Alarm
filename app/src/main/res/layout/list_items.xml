@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/DateView"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+
+        android:textSize="17sp"
+        android:padding="5dp"/>
+
+    <TextView
+        android:id="@+id/TimeView"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+
+        android:textSize="17sp"
+        android:padding="5dp"
+        />
+
+    <TextView
+        android:id="@+id/TeamAway"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+
+        android:padding="5dp"
+        android:textSize="17sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:text="VS"
+        android:padding="5dp"/>
+
+    <TextView
+        android:id="@+id/TeamHome"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+
+        android:padding="5dp"
+        android:textSize="17sp"/>
+
+</LinearLayout>

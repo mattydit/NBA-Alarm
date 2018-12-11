@@ -4,25 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Daily"
+    tools:context=".TeamActivity"
     android:orientation="vertical"
     android:background="#006BB7">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Today's Games"
+        android:text="Favourite Team Schedule"
         android:padding="20dp"
         android:textSize="20sp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginRight="80dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
         android:textStyle="bold"
         android:background="#006BB7"
         android:textColor="#FFFFFF"/>
 
 
     <ListView
-        android:id="@+id/gamelist"
+        android:id="@+id/teamlist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"
@@ -30,7 +30,7 @@
         ></ListView>
 
     <ProgressBar
-        android:id="@+id/progressbar"
+        android:id="@+id/progressbarteam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
