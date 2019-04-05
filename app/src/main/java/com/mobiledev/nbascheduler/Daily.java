@@ -1,22 +1,21 @@
 package com.mobiledev.nbascheduler;
 
-import android.arch.persistence.room.Room;
-import android.content.Intent;
-import android.database.Cursor;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.mobiledev.nbascheduler.database.ReminderDao;
+import com.mobiledev.nbascheduler.database.ReminderDataModel;
+import com.mobiledev.nbascheduler.database.ReminderDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,10 +23,8 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class Daily extends AppCompatActivity
 {
@@ -39,8 +36,8 @@ public class Daily extends AppCompatActivity
     Date currentDate = new Date();
     String localDate = df.format(currentDate);
 
-    //private static final String DATABASE_NAME = "reminder_db";
-    ReminderDatabase reminderDB;
+    ReminderDatabase database;
+    ReminderDataModel reminderData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -49,9 +46,7 @@ public class Daily extends AppCompatActivity
         setContentView(R.layout.activity_daily);
         Log.d("Current Date: ", localDate);
 
-        final ReminderDatabase reminderDB = ReminderDatabase.getINSTANCE();
-        //reminderDB = Room.databaseBuilder(getApplicationContext(), ReminderDatabase.class, DATABASE_NAME)
-        //        .fallbackToDestructiveMigration().allowMainThreadQueries().build();
+        database = ReminderDatabase.getDatabase(getApplicationContext());
 
         listView = findViewById(R.id.gamelist);
         progressBar = findViewById(R.id.progressbar);
@@ -78,15 +73,18 @@ public class Daily extends AppCompatActivity
                 final String visitor_team = scheduleList.get(position).getVisitor_team();
                 final String home_team = scheduleList.get(position).getHome_team();
 
-                //reminderDB = ReminderDatabase.getINSTANCE();
+                Schedule reminder = new Schedule();
+                reminder.setGameID(gameID);
+                reminder.setG_date(g_date);
+                reminder.setHome_team(home_team);
+                reminder.setVisitor_team(visitor_team);
+                reminder.setUTCtime(time);
 
-                reminderDB.daoAccess().deleteAll();
-                //Add to database
-                ReminderDataModel reminder = new ReminderDataModel(gameID, g_date, time, visitor_team,
-                        home_team);
-                reminderDB.daoAccess().insertGame(reminder);
+                ReminderDao reminderDao = database.daoAccess();
+                //Item to be inserted into database
+                reminderData = new ReminderDataModel(gameID, g_date, time, visitor_team, home_team);
 
-                Log.d("DB: ", reminderDB.daoAccess().getAllreminders().toString());
+                reminderDao.insertGame(reminderData);
 
                 return true;
             }

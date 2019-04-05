@@ -1,10 +1,10 @@
-package com.mobiledev.nbascheduler;
+package com.mobiledev.nbascheduler.database;
 
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
-import android.support.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.annotation.NonNull;
 
-@Entity(tableName = "reminder_table")
+@Entity(tableName = "reminderDB")
 public class ReminderDataModel
 {
     @NonNull

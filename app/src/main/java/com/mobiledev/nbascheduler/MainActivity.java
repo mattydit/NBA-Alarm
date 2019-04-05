@@ -1,16 +1,16 @@
 package com.mobiledev.nbascheduler;
 
-import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.room.Room;
+
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
+
+import com.mobiledev.nbascheduler.database.ReminderDatabase;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
@@ -22,7 +22,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Room.databaseBuilder(this, User.class, UserRoomDatabase).fallbackToDestructiveMigration().build();
+        ReminderDatabase database = Room.databaseBuilder(getApplicationContext(),
+                ReminderDatabase.class, "reminderDB")
+                .allowMainThreadQueries()
+                .build();
 
         AppCompatButton dailybutton = findViewById(R.id.daily);
         AppCompatButton teamSchedbtn = findViewById(R.id.team_schedule);
@@ -35,10 +38,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         newsbutton.setOnClickListener(this);
         settingsbtn.setOnClickListener(this);
         remindersbtn.setOnClickListener(this);
-
-        reminderDB = ReminderDatabase.getINSTANCE();
-        //reminderDB = Room.databaseBuilder(getApplicationContext(), ReminderDatabase.class, "reminderDB")
-                //.fallbackToDestructiveMigration().allowMainThreadQueries().build();
 
     }
 

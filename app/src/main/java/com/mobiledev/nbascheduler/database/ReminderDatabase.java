@@ -1,8 +1,8 @@
-package com.mobiledev.nbascheduler;
+package com.mobiledev.nbascheduler.database;
 
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.Room;
-import android.arch.persistence.room.RoomDatabase;
+import androidx.room.Database;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
 import android.content.Context;
 
 @Database(entities = {ReminderDataModel.class}, version = 1)
@@ -10,9 +10,9 @@ public abstract class ReminderDatabase extends RoomDatabase
 {
     public abstract ReminderDao daoAccess();
 
-    private static volatile ReminderDatabase INSTANCE;
+    private static ReminderDatabase INSTANCE;
 
-    static ReminderDatabase getDatabase(final Context context)
+    public static ReminderDatabase getDatabase(final Context context)
     {
         if (INSTANCE == null)
         {
@@ -20,8 +20,8 @@ public abstract class ReminderDatabase extends RoomDatabase
             {
                 if (INSTANCE == null)
                 {
-                    INSTANCE = Room.inMemoryDatabaseBuilder(context.getApplicationContext(),
-                            ReminderDatabase.class).allowMainThreadQueries().build();
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
+                            ReminderDatabase.class, "reminderDB").allowMainThreadQueries().build();
                 }
             }
         }
