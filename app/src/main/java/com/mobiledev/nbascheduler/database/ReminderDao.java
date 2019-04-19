@@ -17,4 +17,8 @@ public interface ReminderDao
 
    @Query("DELETE FROM reminderDB")
     void deleteAll();
+
+   @Query("DELETE FROM reminderDB WHERE gameID = :gameID")
+   void deleteGame(String gameID);
+
 }

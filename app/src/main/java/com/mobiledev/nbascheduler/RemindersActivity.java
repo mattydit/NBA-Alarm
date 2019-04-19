@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.mobiledev.nbascheduler.database.ReminderDao;
 import com.mobiledev.nbascheduler.database.ReminderDataModel;
@@ -34,7 +36,7 @@ public class RemindersActivity extends AppCompatActivity
 
         database = ReminderDatabase.getDatabase(getApplicationContext());
 
-        ReminderDao reminderDao = database.daoAccess();
+        final ReminderDao reminderDao = database.daoAccess();
 
         //Daily d1 = new Daily();
         listView = findViewById(R.id.reminderlist);
@@ -64,6 +66,24 @@ public class RemindersActivity extends AppCompatActivity
         listView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                Toast.makeText(getBaseContext(), scheduleList.get(position).getGameID(), Toast.LENGTH_LONG).show();
+
+                reminderDao.deleteGame(scheduleList.get(position).getGameID());
+
+                scheduleList.remove(position);
+
+                GamesAdapter adapter = new GamesAdapter(scheduleList, getApplicationContext());
+                //Add adapter to ListView
+                listView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+
+                return true;
+            }
+        });
 
     }
 
