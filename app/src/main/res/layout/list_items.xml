@@ -3,45 +3,57 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="60dp"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/DateView"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
+    <TableRow
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        >
+        <TextView
+            android:id="@+id/DateView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:padding="5dp"/>
 
-        android:textSize="17sp"
-        android:padding="5dp"/>
+        <TextView
+            android:id="@+id/TimeView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:padding="5dp"
+            />
+    </TableRow>
 
-    <TextView
-        android:id="@+id/TimeView"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
+    <TableRow
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        >
+        <TextView
+            android:id="@+id/TeamAway"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-        android:textSize="17sp"
-        android:padding="5dp"
-        />
+            android:padding="5dp"
+            android:textSize="17sp"/>
 
-    <TextView
-        android:id="@+id/TeamAway"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="vs"
+            android:padding="5dp"/>
 
-        android:padding="5dp"
-        android:textSize="17sp"/>
+        <TextView
+            android:id="@+id/TeamHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:text="VS"
-        android:padding="5dp"/>
+            android:padding="5dp"
+            android:textSize="17sp"/>
+    </TableRow>
 
-    <TextView
-        android:id="@+id/TeamHome"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
 
-        android:padding="5dp"
-        android:textSize="17sp"/>
 
 </LinearLayout>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NBA Scheduler</string>
+    <string name="app_name">NBA Alarm</string>
     <string name="games">Daily Games</string>
     <string name="team_games">Team Schedule</string>
     <string name="Name">Username: </string>

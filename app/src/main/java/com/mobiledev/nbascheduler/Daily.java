@@ -23,8 +23,10 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class Daily extends AppCompatActivity
 {
@@ -36,6 +38,12 @@ public class Daily extends AppCompatActivity
     Date currentDate = new Date();
     String localDate = df.format(currentDate);
 
+    SimpleDateFormat dt = new SimpleDateFormat("HH");
+    Date currentTime = new Date();
+    String localTime = dt.format(currentTime);
+
+
+
     ReminderDatabase database;
     ReminderDataModel reminderData;
 
@@ -45,6 +53,16 @@ public class Daily extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily);
         Log.d("Current Date: ", localDate);
+        Log.d("Current Time: ", localTime);
+
+        //If current time is less than 04:00, show previous days games.
+        if (Integer.parseInt(localTime) < 4)
+        {
+            Calendar cal = Calendar.getInstance();
+            cal.add(Calendar.DATE, -1);
+
+            localDate = df.format(cal.getTime());
+        }
 
         database = ReminderDatabase.getDatabase(getApplicationContext());
 
@@ -63,7 +81,7 @@ public class Daily extends AppCompatActivity
 
                 //String pos = Integer.toString(position);
 
-                scheduleList.get(position).getGameID();
+                //scheduleList.get(position).getGameID();
 
                 Toast.makeText(getBaseContext(), scheduleList.get(position).getGameID(), Toast.LENGTH_LONG).show();
 
@@ -102,6 +120,7 @@ public class Daily extends AppCompatActivity
                     public void onResponse(JSONObject response) {
                         //Hide progress bar.
                         progressBar.setVisibility(View.GONE);
+                        //Show list
                         listView.setVisibility(View.VISIBLE);
 
                         //Show json in log

@@ -4,6 +4,8 @@ import androidx.room.Room;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -45,7 +47,24 @@ public class RemindersActivity extends AppCompatActivity
         for (int i = 0; i < dbList.size(); i++)
         {
             Log.d("DB", dbList.get(i).getHome_team());
+            Schedule item = new Schedule();
+            item.setGameID(dbList.get(i).getGameID());
+            item.setG_date(dbList.get(i).getDate());
+            item.setUTCtime(dbList.get(i).getTime());
+            item.setVisitor_team(dbList.get(i).getVisitor());
+            item.setHome_team(dbList.get(i).getHome_team());
+
+            //Add the game to lust.
+            scheduleList.add(item);
         }
 
+        //Create custom adapter
+        GamesAdapter adapter = new GamesAdapter(scheduleList, getApplicationContext());
+        //Add adapter to ListView
+        listView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
+
     }
+
 }
