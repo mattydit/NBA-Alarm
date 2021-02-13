@@ -1,5 +1,7 @@
 package com.mobiledev.nbascheduler;
 
+import android.graphics.drawable.Drawable;
+
 public class Schedule
 {
     private String gameID;
@@ -7,6 +9,8 @@ public class Schedule
     private String home_team;
     private String visitor_team;
     private String UTCtime;
+    private Drawable logoAway;
+    private Drawable logoHome;
 
     public String getGameID() {
         return gameID;
@@ -46,5 +50,21 @@ public class Schedule
 
     public void setUTCtime(String UTCtime) {
         this.UTCtime = UTCtime;
+    }
+
+    public Drawable getLogoAway() {
+        return logoAway;
+    }
+
+    public void setLogoAway(Drawable logoAway) {
+        this.logoAway = logoAway;
+    }
+
+    public Drawable getLogoHome() {
+        return logoHome;
+    }
+
+    public void setLogoHome(Drawable logoHome) {
+        this.logoHome = logoHome;
     }
 }

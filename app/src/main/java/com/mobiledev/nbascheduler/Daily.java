@@ -1,6 +1,8 @@
 package com.mobiledev.nbascheduler;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -111,7 +113,7 @@ public class Daily extends AppCompatActivity
 
     private void loadList()
     {
-        String JSON_URL = "http://data.nba.com/data/10s/v2015/json/mobile_teams/nba/2018/league/00_full_schedule.json";
+        String JSON_URL = "http://data.nba.com/data/10s/v2015/json/mobile_teams/nba/2020/league/00_full_schedule.json";
 
         //String request
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, JSON_URL, null,
@@ -165,6 +167,375 @@ public class Daily extends AppCompatActivity
                                         item.setUTCtime(time);
                                         item.setVisitor_team(visitor);
                                         item.setHome_team(home);
+
+                                        //logos
+                                        switch (visitor)
+                                        {
+                                            case "Bucks":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.bucks);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Bulls":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.bulls);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Cavaliers":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.cavs);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Celtics":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.celtics);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Clippers":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.clippers);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Grizzlies":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.grizzlies);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Hawks":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.hawks);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Heat":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.heat);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Hornets":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.hornets);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Jazz":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.jazz);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Kings":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.kings);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Knicks":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.knicks);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Lakers":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.lakers);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Magic":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.magic);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Mavericks":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.mavs);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Nets":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.nets);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Nuggets":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.nuggets);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Pacers":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.pacers);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Pelicans":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.pelicans);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Pistons":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.pistons);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Raptors":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.raptors);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Rockets":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.rockets);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "76ers":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.sixers);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Spurs":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.spurs);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Suns":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.suns);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Thunder":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.thunder);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Timberwolves":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.wolves);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Trail Blazers":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.blazers);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Warriors":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.warriors);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                            case "Wizards":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.wizards);
+                                                item.setLogoAway(drawable);
+                                                break;
+                                            }
+                                        }
+
+                                        switch (home)
+                                        {
+                                            case "Bucks":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.bucks);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Bulls":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.bulls);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Cavaliers":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.cavs);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Celtics":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.celtics);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Clippers":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.clippers);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Grizzlies":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.grizzlies);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Hawks":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.hawks);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Heat":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.heat);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Hornets":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.hornets);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Jazz":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.jazz);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Kings":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.kings);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Knicks":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.knicks);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Lakers":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.lakers);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Magic":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.magic);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Mavericks":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.mavs);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Nets":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.nets);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Nuggets":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.nuggets);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Pacers":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.pacers);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Pelicans":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.pelicans);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Pistons":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.pistons);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Raptors":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.raptors);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Rockets":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.rockets);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "76ers":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.sixers);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Spurs":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.spurs);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Suns":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.suns);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Thunder":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.thunder);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Timberwolves":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.wolves);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Trail Blazers":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.blazers);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Warriors":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.warriors);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                            case "Wizards":
+                                            {
+                                                Drawable drawable = getResources().getDrawable(R.drawable.wizards);
+                                                item.setLogoHome(drawable);
+                                                break;
+                                            }
+                                        }
 
                                         //Add the game to list.
                                         scheduleList.add(item);

@@ -2,10 +2,13 @@ package com.mobiledev.nbascheduler;
 
 import android.content.Context;
 import androidx.annotation.NonNull;
+
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -35,6 +38,8 @@ public class GamesAdapter extends ArrayAdapter<Schedule>
         TextView textTime = listViewItem.findViewById(R.id.TimeView);
         TextView textAway = listViewItem.findViewById(R.id.TeamAway);
         TextView textHome = listViewItem.findViewById(R.id.TeamHome);
+        ImageView logoAway = listViewItem.findViewById(R.id.LogoAway);
+        ImageView logoHome = listViewItem.findViewById(R.id.LogoHome);
 
         //Get JSON data for the position
         Schedule items = scheduleList.get(position);
@@ -44,6 +49,8 @@ public class GamesAdapter extends ArrayAdapter<Schedule>
         textTime.setText(items.getUTCtime());
         textAway.setText(items.getVisitor_team());
         textHome.setText(items.getHome_team());
+        logoAway.setImageDrawable((items.getLogoAway()));
+        logoHome.setImageDrawable((items.getLogoHome()));
 
         return listViewItem;
     }
