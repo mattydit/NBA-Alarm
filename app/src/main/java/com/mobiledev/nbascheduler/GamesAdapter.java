@@ -49,7 +49,7 @@ public class GamesAdapter extends ArrayAdapter<Schedule>
         textTime.setText(items.getUTCtime());
         textAway.setText(items.getVisitor_team());
         textHome.setText(items.getHome_team());
-        logoAway.setImageDrawable((items.getLogoAway()));
+        logoAway.set
         logoHome.setImageDrawable((items.getLogoHome()));
 
         return listViewItem;
