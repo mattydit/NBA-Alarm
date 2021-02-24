@@ -44,8 +44,6 @@ public class Daily extends AppCompatActivity
     Date currentTime = new Date();
     String localTime = dt.format(currentTime);
 
-
-
     ReminderDatabase database;
     ReminderDataModel reminderData;
 
@@ -65,7 +63,6 @@ public class Daily extends AppCompatActivity
 
             localDate = df.format(cal.getTime());
         }
-
         database = ReminderDatabase.getDatabase(getApplicationContext());
 
         listView = findViewById(R.id.gamelist);
@@ -80,11 +77,8 @@ public class Daily extends AppCompatActivity
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id)
             {
-
                 //String pos = Integer.toString(position);
-
                 //scheduleList.get(position).getGameID();
-
                 Toast.makeText(getBaseContext(), scheduleList.get(position).getGameID(), Toast.LENGTH_LONG).show();
 
                 final String gameID = scheduleList.get(position).getGameID();
@@ -124,7 +118,6 @@ public class Daily extends AppCompatActivity
                         progressBar.setVisibility(View.GONE);
                         //Show list
                         listView.setVisibility(View.VISIBLE);
-
                         //Show json in log
                         Log.d("JSON", response.toString());
 
